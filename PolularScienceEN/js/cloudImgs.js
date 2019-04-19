@@ -6,7 +6,7 @@ $(function(){
 	requestUrl = 'http://www.scsweather.com/Home/GetFy4Product?productCode=';
 	
 	//展示卫星云图
-	$('.Hold-all-item').click(function(){
+	$('#cloud_dt').click(function(){
 		$('.cloud-box').css('display','block');
 	})
 	
@@ -33,7 +33,7 @@ $(function(){
 	//点击后退图标
 	$(".play-rewind").click(function(){
 		if(index == 0 || index < 0){
-			index = dataArr.length;
+			index = dataArr.length-1;
 		}else{
 			index = (index - 2) < 0? index : index -2;
 		}
@@ -45,7 +45,7 @@ $(function(){
 	})
 	//点击前进图标
 	$(".play-fastForward").click(function(){
-		if(index >= dataArr.length ){
+		if(index >= dataArr.length-1){
 			index = 0;
 		} else{
 			index = (index + 1) > dataArr.length ? 0 : index + 1;
