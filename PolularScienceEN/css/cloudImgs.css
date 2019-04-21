@@ -46,7 +46,7 @@ html,body{
 }
 /*新添加的节点样式 */
 .cloud-box{
-	display: none;
+	/*display: none;*/
 }
 .cloudImgs{
 	width:1000px;
@@ -174,4 +174,64 @@ html,body{
 }
 .Hold-all-item:hover{
 	cursor:pointer;
+}
+.cloud-part{
+	position:fixed;
+	top:0%;
+	left:0%;
+	width:100%;
+	height:100%;
+	display: flex;
+	justify-content: center;
+	align-items:center;	
+	margin:0 auto;
+}
+#cloud-part{
+	position:absolute;
+	width:60%;
+	height:80%;
+	margin:0px auto;
+	border:5px solid #95B8E7;
+}
+.cloud-header{
+	height:7%;
+	width:100%;
+	line-height:42px;
+	padding-left:10px;
+	box-sizing:border-box;
+	background:linear-gradient(to bottom,#EFF5FF 0,#E0ECFF 100%);
+	font-size:16px;
+	font-weight:bold;
+	position:relative;
+}
+.cloud-header span:last-child{
+	position:absolute;
+	height:100%;
+	width:40px;
+	top:0px;
+	right:0px;
+	text-align: center;
+	line-height:42px;
+	font-size:15px;
+}
+.cloud-header span:last-child:hover{
+	background:#E0ECFF;
+	cursor: pointer;
+}
+.cloud-body{
+	height:88%;
+	background:#fff;
+}
+.cloud-img{
+	height:94%;
+	width:100%;
+	background:#ccc;
+}
+.cloud-img img{
+	height:100%;
+	width:100%;
+}
+.cloud-tool-bar{
+	height:12%;
+	background:#ccc;
 }

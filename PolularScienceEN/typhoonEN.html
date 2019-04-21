@@ -20,6 +20,9 @@
 	<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
 	<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="css/cloudImgs.css">
+	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	
     <style>
         <!---->
@@ -161,12 +164,7 @@
     </style>
 </head>
 <body>
-	<div class="panel panel-default">
-  <div class="panel-heading">Panel heading without title</div>
-  <div class="panel-body">
-    Panel content
-  </div>
-</div>
+	
 <div id="elementValue_div" style="text-align: center; background-color: rgb(23, 32, 91); border-radius: 5px; position: relative; margin-top: -68px;z-index: 999;">
     <span class="glyphicon glyphicon-play" style="font-size: 12px; position: absolute;left: -2px;color:#146dc3;top: 53px;">
     </span>
@@ -567,7 +565,7 @@
     </div>
 	
 	<!-- 卫星云图html开始 -->
-	<!-- <div class="cloud-box">
+	 <!--<div class="cloud-box">
 		<div class="cloudImgs">
 			<span class="easyui-linkbutton span-icon span-cancel" iconCls="icon-clear"></span>
 			<div id="dg" title="卫星云图" class="easyui-datagrid" style="width:1000px;height:auto;"
@@ -604,17 +602,42 @@
 		</div>
 	</div> -->
 	<!-- 卫星云图html结束 -->
-<!-- 	<div class="cloud-box">
-		<div id="cloudImg">
-			<div class="panel panel-primary">sss</div>
+	<div class="cloud-part">
+		<div id="cloud-part">
+			<div class="cloud-body">
+				<div class="cloud-header">
+					<span>卫星云图</span>
+					<span class="glyphicon glyphicon-remove"></span>
+				</div>
+				<div class="cloud-img">
+					<img src="http://www.scsweather.com//FY4ProductData/2019/04/19/FY4A_ETCC_ACHN_201904191450.jpg" />
+				</div>
+			</div>
+			<div class='cloud-tool-bar'>
+				
+			</div>
+			
 		</div>
-	</div> -->
-	
-	<div id="myModal" class="modal fade" data-keyboard="false"
-	     data-backdrop="static" data-role="dialog"
-	     aria-labelledby="myModalLabel" aria-hidden="true">
-	    <div id="loading" class="loading">Loading...</div>
 	</div>
+	
+	<!--<div class="cloud-part" >
+		<div >
+			<div class="panel panel-primary panel-box">
+			<div class="panel-header">Panel footer</div>
+			<div class="panel-body">
+			    Panel content
+			 </div>
+			<div id="myModal" class="modal fade" data-keyboard="false"
+		     data-backdrop="static" data-role="dialog"
+		     aria-labelledby="myModalLabel" aria-hidden="true">
+		    	<div id="loading" class="loading">Loading...</div>
+			</div>
+			 
+		</div>
+		</div>
+		
+	</div>-->
+	
 </div>
 
 </body>

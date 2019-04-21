@@ -5,6 +5,41 @@ $(function(){
 	var play = false, imgArray = [], dataArr = [], index = 0, timer = '' ,
 	requestUrl = 'http://www.scsweather.com/Home/GetFy4Product?productCode=';
 	
+//	$( ".panel-box").draggable();
+	var box = document.getElementById('cloud-part');
+
+	// 鼠标按下并移动（开始拖拽）
+	box.onmousedown = function(evt){
+		evt = evt || window.event;
+		// 在摁下时，记录摁下的位置
+		// 摁下光标位置距离事件源对象的偏移量
+		// offsetX,offsetY
+		var ox = evt.offsetX;
+		var oy = evt.offsetY;
+
+
+		document.onmousemove = function(e){
+			e = e || window.event;
+
+
+			// 在拖拽的过程中不断改变#box的top,left
+			box.style.left = e.clientX - ox + 'px';
+			box.style.top =  e.clientY - oy + 'px';
+
+
+			if(e.preventDefault){
+				e.preventDefault();
+			}else{
+				e.returnValue = false;
+			}
+		}
+	}
+
+	// 鼠标松开（拖拽完成）
+	document.onmouseup = function(){
+		document.onmousemove = null;
+	}
+	
 	//展示卫星云图
 	$('#cloud_dt').click(function(){
 		$('.cloud-box').css('display','block');
