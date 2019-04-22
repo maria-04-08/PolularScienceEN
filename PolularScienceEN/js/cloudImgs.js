@@ -2,14 +2,12 @@
 $(function(){ 
 	
 	$.parser.parse(); //对整个页面重新渲染
-	var play = false, imgArray = [], dataArr = [], index = 0, timer = '' ,
+	var play = false, imgArray = [], dataArr = [], index = 0, timer = '', clickStatus = false,
 	requestUrl = 'http://www.scsweather.com/Home/GetFy4Product?productCode=';
 	
-	$( "#cloud-part").draggable();
-	
 	//弹窗拖拽
-	// dragCloudBox();
-	
+	$( "#cloud-part").draggable();
+
 	//展示卫星云图
 	$('#cloud_dt').click(function(){
 		$('.cloud-part').css('display','flex');
@@ -37,18 +35,21 @@ $(function(){
 	
 	//点击后退图标
 	$(".play-rewind").click(function(){
+		clickStatus = false;
 		if(index == 0 || index < 0){
-			index = dataArr.length;
+			index = dataArr.length-1;
+		}else{
+			index = (index - 1) < 0? index : index - 1 ;
 		}
 		if(play){ //播放
 			index = (index - 2) < 0? index : index - 2 ;
 		}else{ //没有播放
-			index = (index - 1) < 0? index : index - 1 ;
 			changeImgs();
 		}
 	})
 	//点击前进图标
 	$(".play-fastForward").click(function(){
+		clickStatus = false;
 		if(index >= dataArr.length-1){
 			index = 0;
 		} else{
@@ -71,27 +72,65 @@ $(function(){
 		$('.play-bar-left ul').toggleClass('show');
 		$(".pro-title span:last-child").toggleClass('glyphicon-triangle-top');
 	})
-	
+	//点击产品列表中的li
+	$('.play-bar-left ul').click(function(e){
+		var target = $(event.target);
+		$('.play-bar-left').find('.active').removeClass('active');
+		if(target.is($('li'))){
+			target.addClass('active');
+			var productCode = target.attr('id');//产品code值
+			_url = requestUrl + productCode;
+			play = false;
+			clickStatus = false;
+			$('.pro-title .text').text(target.text());
+			$('.play-not').css('background-position','0 -252px');
+			getData(_url); //覆盖数据
+			clearInterval(timer); //清除定时器
+			index = 0; //初始化index
+			showTimeList(); //滚动条滑动到指定的li
+		}
+	})
 	//点击展示时间列表
 	$('.play-title').click(function(){
+		if(play || clickStatus){
+		}else{
+			showTimeList();
+		}
 		$('.play-bar-right ul').toggleClass('show');
 		$(".play-title span:last-child").toggleClass('glyphicon-triangle-top');
 	})
 	//点击展示时间列表中的li
 	$('.play-bar-right ul').click(function(e){
-		var target = $(event.target)
+		var target = $(event.target);
 		if(target.is($('li'))){
+			clickStatus = true;
 			index = target.attr('id');
 			showTimeList();
 			updateVal();
 		}
 	})
+	//点击时间列表及产品列表以外的位置关闭列表
+	$('#cloud-part').click(function(e){
+		var target = $(event.target);
+		if(target.hasClass('play-title') || target.hasClass('pro-title') || target.hasClass('text')){
+		}else{
+			if($('.play-bar-right ul').hasClass('show')){
+				$('.play-bar-right ul').toggleClass('show');
+				$(".play-title span:last-child").toggleClass('glyphicon-triangle-top');
+			}
+			if($('.play-bar-left ul').hasClass('show')){
+				$('.play-bar-left ul').toggleClass('show');
+				$(".pro-title span:last-child").toggleClass('glyphicon-triangle-top');
+			}
+		}
+	})
+	//公共的hover样式方法
 	function elHover(num,el,position1,position2,position3,position4){
 		el.hover(function(){
 			if(num == 0){
-				if(play){ //暂停
+				if(play){ //播放
 					el.css('background-position',position1);
-				}else{ //播放开始 
+				}else{ //未播放 
 					el.css('background-position',position2);
 				}
 			}else{
@@ -184,7 +223,7 @@ $(function(){
 		　　}
 			showTimeList();
 		　　 updateVal();
-		},2000);
+		},1200);
 	}
 	//切换图片
 	function changeImgs(){
@@ -192,7 +231,6 @@ $(function(){
 			$('.play-title .text').text(dataArr[index].ProductTime);
 		}
 		$(".cloud-img img").attr("src",imgArray[index]);
-		showTimeList();
 	}
 	//展示时间列表
 	function showTimeList(){
@@ -200,7 +238,7 @@ $(function(){
 		$($('.play-bar-right ul li')[index]).addClass('active');
 		$('.play-bar-right ul').animate({
 		    scrollTop: (index)*32 + 'px'
-		}, 600);
+		}, 500);
 	}
 	//修改展示时间及图片的值
 	function updateVal(){
