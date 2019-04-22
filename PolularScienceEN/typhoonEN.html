@@ -17,12 +17,7 @@
     <link rel="stylesheet" type="text/css" href="css/typhoon.css">
 
 	<!-- 卫星云图引入外部资源文件 -->
-	<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/default/easyui.css">
-	<link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/themes/icon.css">
 	<link rel="stylesheet" type="text/css" href="css/cloudImgs.css">
-	<link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
-  <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
-  <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 	
     <style>
         <!---->
@@ -565,78 +560,47 @@
     </div>
 	
 	<!-- 卫星云图html开始 -->
-	 <!--<div class="cloud-box">
-		<div class="cloudImgs">
-			<span class="easyui-linkbutton span-icon span-cancel" iconCls="icon-clear"></span>
-			<div id="dg" title="卫星云图" class="easyui-datagrid" style="width:1000px;height:auto;"
-				toolbar="#cloudImg">
-			</div>
-		</div>
-		<div id="cloudImg">
-			<div class="img-box">
-				<img id="cloud-img" src=""/>
-			</div>
-			<div class="play-bar">
-				<div class="play-bar-left">
-					<div class="dropup">
-					  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						<span class="text">真彩</span>
-						<span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-						<li><a href="#" id="58378">真彩</a></li>
-						<li><a href="#" id="58379">红外</a></li>
-						<li><a href="#" id="58380">可见光</a></li>
-						<li><a href="#" id="58381">水汽</a></li>
-						<li role="separator" class="divider"></li>
-					  </ul>
-					</div>
-				</div>
-				<div class="play-bar-right">
-					<p class="play-not"></p>
-					<p class="play-rewind"></p>
-					<p class="play-fastForward"></p>
-					<span class="play-title"></span>
-				</div>
-			</div>
-		</div>
-	</div> -->
-	<!-- 卫星云图html结束 -->
 	<div class="cloud-part">
 		<div id="cloud-part">
 			<div class="cloud-body">
 				<div class="cloud-header">
-					<span>卫星云图</span>
-					<span class="glyphicon glyphicon-remove"></span>
+					<span  id="cloud-header">卫星云图</span>
+					<span class="glyphicon glyphicon-remove close-cloud"></span>
 				</div>
 				<div class="cloud-img">
 					<img src="http://www.scsweather.com//FY4ProductData/2019/04/19/FY4A_ETCC_ACHN_201904191450.jpg" />
 				</div>
 			</div>
-			<div class='cloud-tool-bar'>
-				
+			<div class="cloud-tool-bar play-bar">
+				<div class="play-bar-left">
+					<p class="pro-title">
+						<span class="text">真彩</span><span class="glyphicon glyphicon-triangle-bottom"></span>
+					</p>
+					<ul class="select-box ul-list">
+						<li class="active"><span id="58378">真彩</span></li>
+						<li><span id="58378">红外</span></li>
+						<li><span id="58378">可见光</span></li>
+						<li><span id="58378">水汽</span></li>
+					</ul>
+					<!-- <select class="select-box">
+						<option value="58378">真彩</option>
+						<option value="58379">红外</option>
+						<option value="58380">可见光</option>
+						<option value="58381">水汽</option>
+					</select> -->
+				</div>
+				<div class="play-bar-right">
+					<p class="play-not"></p>
+					<p class="play-rewind"></p>
+					<p class="play-fastForward"></p>
+					<p class="play-title"><span class="text"></span><span class="glyphicon glyphicon-triangle-bottom"></span></p>
+					<ul class="ul-list">
+					</ul>
+				</div>
 			</div>
-			
 		</div>
 	</div>
-	
-	<!--<div class="cloud-part" >
-		<div >
-			<div class="panel panel-primary panel-box">
-			<div class="panel-header">Panel footer</div>
-			<div class="panel-body">
-			    Panel content
-			 </div>
-			<div id="myModal" class="modal fade" data-keyboard="false"
-		     data-backdrop="static" data-role="dialog"
-		     aria-labelledby="myModalLabel" aria-hidden="true">
-		    	<div id="loading" class="loading">Loading...</div>
-			</div>
-			 
-		</div>
-		</div>
-		
-	</div>-->
+	<!-- 卫星云图html结束 -->
 	
 </div>
 
