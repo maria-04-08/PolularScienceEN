@@ -23,8 +23,8 @@ html,body{
 	position:absolute;
 	width:50%;
 	height:76%;
-	min-height:600px;
 	min-width:800px;
+	min-height:600px;
 	margin:0px auto;
 	border:5px solid #95B8E7;
 }
